@@ -1,0 +1,394 @@
+1. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+   class PigLatin
+    {
+        public static void Main(string[] args)
+        {
+            string str;
+            Console.Write("enter the string to convert\n");
+            str=Console.ReadLine();
+            Console.WriteLine(MakePigLatin(str));
+        }
+
+        public static string MakePigLatin(string str)
+        {
+            string[] words = str.Split(' ');
+            str = String.Empty;
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i].Length <= 0) continue;
+                string output = new String(words[i].ToCharArray());
+                output = output.Substring(1, output.Length - 1) + output.Substring(0, 1) + "ay ";
+                str += output;
+            }
+            return str.Trim();
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+2. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+   class Multiply
+    {
+        public static void Main()
+        {
+            int num, total, first, second;
+            Console.WriteLine("enter the number");
+            num = int.Parse(Console.ReadLine());
+            if(num!=0)
+            {
+                total = num * 365;
+                first = total / 10000;
+                second = total % 10000;
+                if (first == second)
+                    Console.WriteLine(total);
+                else
+                    Console.WriteLine("not same");
+            }
+        }
+      }
+}
+----------------------------------------------------------------------------------------------------------------
+3. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class Power
+    {
+        public static void Main()
+        {
+            double k = 0;
+            double r;
+            Console.WriteLine("enter the value of n");
+            double n = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter the value of p");
+            double p = int.Parse(Console.ReadLine());
+            if (n>1 && p>1)
+            {
+                k = Math.Pow(p, 1 / n);
+            }
+            else
+            {
+                Console.WriteLine("enter only positive integers");
+            }
+            r = Math.Pow(k, n);
+            if (r == p)
+            {
+                Console.WriteLine("the value is {0}", k);
+            }
+            else
+            {
+                Console.WriteLine("no such integers");
+            }
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------
+4. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class Encrypt
+    {
+        public static void Main()
+        {
+            Encrypt e = new Encrypt();
+            Console.WriteLine("enter the numbers");
+            int n1 = int.Parse(Console.ReadLine());
+            int n2 = int.Parse(Console.ReadLine());
+            int n3 = int.Parse(Console.ReadLine());
+            int n4 = int.Parse(Console.ReadLine());
+            e.Compute(n1, n2, n3, n4);
+
+        }
+      public void Compute(int d1,int d2,int d3,int d4)
+        {
+            d1 = (d1 + 7) % 10;
+            d2 = (d2+ 7) % 10;
+            d3 = (d3 + 7) % 10;
+            d4 = (d4 + 7) % 10;
+
+            int temp;
+            temp = d1;
+            d1 = d3;
+            d3 = temp;
+
+            int temp1;
+            temp1 = d2;
+            d2 = d4;
+            d4 = temp1;
+
+            Console.WriteLine("the numbers are {0}{1}{2}{3}", d1, d2, d3, d4);
+
+
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------
+5. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+   class Armstrong
+    {
+     public static void Main()
+        {
+            int rev, sum = 0, num, temp;
+            Console.WriteLine("enter the number");
+            num = int.Parse(Console.ReadLine());
+            temp = num;
+            while(num!=0)
+            {
+                rev = num % 10;
+                sum = sum + (rev * rev * rev);
+                num = num / 10;
+            }
+            if (temp == sum)
+                Console.WriteLine("The integer {0} is equal to the sum of the cubes of its digits",temp);
+            else if (temp > 9 && temp < 99)
+                Console.WriteLine("The integer {0} does not have three digits",temp);
+            else
+                Console.WriteLine("The integer {0} is not equal to the sum of the cubes of its digits",temp);
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------------
+6. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class TMEAN
+    {
+        public static void Main()
+        {
+            List<int> lt = new List<int>();
+            lt.Add(5);
+            lt.Add(12);
+            lt.Add(8);
+            lt.Add(3);
+            int m1 = lt.Max();
+            int m2 = lt.Min();
+            //Console.WriteLine("the maximum is {0} ", m1);
+            //Console.WriteLine("the minimum is {0} ", m2);
+            lt.Remove(m1);
+            lt.Remove(m2);
+            Console.WriteLine("the trimmed mean is {0}",Math.Round(lt.Sum(x => Convert.ToDouble(x)) / 2,2));
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------------
+7. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class Digits
+    {
+        public static void Main()
+        {
+            int num, temp, cnt = 0;
+            Console.WriteLine("enter the number");
+            num = int.Parse(Console.ReadLine());
+            temp = num;
+            if(num==0)
+            {
+                cnt = 1;
+                Console.Write("the number of digits in {0} is {1}", temp, cnt);
+            }
+            else
+            {
+               while (num != 0)
+                {
+                    cnt = cnt + 1;
+                    num /= 10;
+                }
+               
+            }
+            Console.Write("the number of digits in {0} is {1}", temp, cnt);
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+8. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class PascalTriangle
+    {
+       
+          public static void Main()
+            {
+                int rows,val = 1, blank, i, j;
+                Console.WriteLine("enter number of rows");
+                rows = int.Parse(Console.ReadLine());
+                Console.WriteLine("Pascal's triangle");
+                for (i = 0; i < rows; i++)
+                {
+                    for (blank = 1; blank <= rows - i; blank++)
+                        Console.Write("  ");
+                    for (j = 0; j <= i; j++)
+                    {
+                        if (j == 0 || i == 0)
+                            val = 1;
+                        else
+                            val = val * (i - j + 1) / j;
+                        Console.Write(val + "   ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+---------------------------------------------------------------------------------------------------------------
+9. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+   class PosNeg
+    {
+        public static void Main()
+        {
+            Console.WriteLine("enter the number");
+            double n1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("enter the 2nd number");
+            double n2 = double.Parse(Console.ReadLine());
+            if (n1 < 0 && n2 < 0)
+                Console.WriteLine("negative");
+            else if(n1 > 0 && n2 > 0)
+                Console.WriteLine("positive");
+            else if(n1 < 0 && -(n1) > n2 || n2 < 0 && -(n2) > n1)
+                Console.WriteLine("negative");
+            else
+                Console.WriteLine("positive");
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------
+10. using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise
+{
+    class Time
+    {
+        int seconds;
+        int minutes;
+        int hours;
+        public Time(int hours, int minutes, int seconds)
+        {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+        }
+        public static void Main(String[] args)
+        {
+            Dictionary<int, String> d1 = new Dictionary<int, String>();
+            d1[1] = "Sunday";
+            d1[2] = "monday";
+            d1[3] = "tuesday";
+            d1[4] = "wednesday";
+            d1[5] = "thursday";
+            d1[6] = "friday";
+            d1[7] = "Saturday";
+
+            Console.WriteLine("-------------Retrieving only Keys which are first----------------");
+            foreach (int key in d1.Keys)
+            {
+                Console.WriteLine(key);
+
+            }
+
+            //Console.WriteLine(d1[6]);
+
+            Time start = new Time(12, 34, 55),
+                        stop = new Time(8, 12, 15),
+                        diff;
+            diff = difference(start, stop);
+            Console.WriteLine("TIME DIFFERENCE: {0}:{1}:{2} -  {3}:{4}:{5}", start.hours, start.minutes, start.seconds, stop.hours, stop.minutes, stop.seconds);
+
+
+            //Console.WriteLine("{0}:{1}:{2} ", diff.hours, diff.minutes, diff.seconds);
+
+            Console.WriteLine("{0} ", diff.minutes);
+            var min1 = diff.minutes - 1;
+            Console.WriteLine(" Cost for remaining  min {0} ", min1 * 57);//remain
+            var min2 = diff.minutes - min1;//1 min
+            Console.WriteLine(" Cost for 1 min {0} ", min2 * 107);
+            var cost = min1 + min2;
+            Console.WriteLine(" Cost for {0} is {1} ", d1[6], (0.40) * cost);
+
+
+
+
+
+        }
+        public static Time difference(Time start, Time stop)
+        {
+            Time diff = new Time(0, 0, 0);
+            if (stop.seconds > start.seconds)
+            {
+                --start.minutes;
+                start.seconds += 60;
+            }
+            diff.seconds = start.seconds - stop.seconds;
+            if (stop.minutes > start.minutes)
+            {
+                --start.hours;
+                start.minutes += 60;
+            }
+            diff.minutes = start.minutes - stop.minutes;
+            diff.hours = start.hours - stop.hours;
+            return (diff);
+        }
+    }
+}
+    
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+   
